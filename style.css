@@ -1,0 +1,145 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #ccc;
+  --today-color: #ffeeba;
+}
+
+body.dark {
+  --bg-color: #1e1e1e;
+  --text-color: #ffffff;
+  --border-color: #555;
+  --today-color: #44475a;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+}
+
+.theme-toggle {
+  padding: 1rem;
+  text-align: right;
+}
+
+.calendar-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 1rem;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navigation button, .view-toggle button {
+  margin: 0.3rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+}
+
+#calendar-view {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.day {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem;
+  position: relative;
+  min-height: 100px;
+  background-color: var(--bg-color);
+  transition: transform 0.2s ease-in;
+  cursor: pointer;
+}
+
+.day:hover {
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.day.today {
+  background-color: var(--today-color);
+}
+
+.event-marker {
+  background-color: var(--event-color, #007bff);
+  border-radius: 4px;
+  padding: 0.2rem;
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.event-marker span {
+  flex: 1;
+}
+
+.event-marker button {
+  margin-left: 5px;
+  background: transparent;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background: var(--bg-color);
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 5px;
+  width: 90%;
+  max-width: 400px;
+  transition: transform 0.3s ease;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-color);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  #calendar-view {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dynamic Calendar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="theme-toggle">
+    <label>
+      <input type="checkbox" id="theme-switch" />
+      Dark Mode
+    </label>
+  </div>
+
+  <div class="calendar-container">
+    <header>
+      <div class="navigation">
+        <button id="prev-month">&#8592;</button>
+        <h2 id="current-month"></h2>
+        <button id="next-month">&#8594;</button>
+      </div>
+      <div class="view-toggle">
+        <button data-view="month">Month</button>
+        <button data-view="week">Week</button>
+        <button data-view="day">Day</button>
+      </div>
+    </header>
+
+    <main id="calendar-view"></main>
+
+    <!-- Modal for Event -->
+    <div id="event-modal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Add/Edit Event</h3>
+        <form id="event-form">
+          <input type="text" id="event-title" placeholder="Event Title" required />
+          <input type="time" id="event-time" />
+          <textarea id="event-description" placeholder="Description (optional)"></textarea>
+          <select id="event-category">
+            <option value="work">Work</option>
+            <option value="personal">Personal</option>
+            <option value="holiday">Holiday</option>
+          </select>
+          <select id="event-recurrence">
+            <option value="none">None</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+          </select>
+          <div class="modal-actions">
+            <button type="submit">Save</button>
+            <button type="button" id="delete-event">Delete</button>
+            <button type="button" id="close-modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
